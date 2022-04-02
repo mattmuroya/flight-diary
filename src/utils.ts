@@ -1,18 +1,20 @@
 import { NewDiaryEntry, Weather, Visibility } from './types';
 
-interface Fields {
-  comment: unknown;
-  date: unknown;
-  weather: unknown;
-  visibility: unknown;
-}
+// interface Fields {
+//   comment: unknown;
+//   date: unknown;
+//   weather: unknown;
+//   visibility: unknown;
+// }
 
-export const toNewDiaryEntry = ({ comment, date, weather, visibility }: Fields): NewDiaryEntry => {
+// export const toNewDiaryEntry = ({ comment, date, weather, visibility }: Fields): NewDiaryEntry => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const toNewDiaryEntry = (obj: any): NewDiaryEntry => {
   const newEntry: NewDiaryEntry = {
-    comment: parseComment(comment),
-    date: parseDate(date),
-    weather: parseWeather(weather),
-    visibility: parseVisibility(visibility)
+    comment: parseComment(obj.comment),
+    date: parseDate(obj.date),
+    weather: parseWeather(obj.weather),
+    visibility: parseVisibility(obj.visibility)
   };
   return newEntry;
 };
