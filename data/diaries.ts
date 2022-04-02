@@ -1,6 +1,8 @@
 import { DiaryEntry } from '../src/types';
+import { toNewDiaryEntry } from '../src/utils';
 
-export const diaryEntries: Array<DiaryEntry> = [
+// export const diaryEntries: Array<DiaryEntry> = [
+const originalData = [
   {
       "id": 1,
       "date": "2017-01-01",
@@ -30,3 +32,9 @@ export const diaryEntries: Array<DiaryEntry> = [
       "comment": "I almost failed the landing but I survived"
   }
 ];
+
+export const diaryEntries: DiaryEntry[] = originalData.map(obj => {
+    const object = toNewDiaryEntry(obj) as DiaryEntry; // need to assert DiaryEntry so that we can place it back into the DiaryEntry array (toNewDiaryEntry returns NewDiaryEntry type)
+    object.id = obj.id;
+    return object;
+});
